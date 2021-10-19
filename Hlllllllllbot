@@ -1,0 +1,2 @@
+
+git clone https://github.com/surse/iraq.git; cd iraq;chmod +x tg;chmod +x IRAQ.sh;chmod +x RQ;./IRAQ.sh
