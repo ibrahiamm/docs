@@ -1,63 +1,89 @@
-# GitHub Docs <!-- omit in toc -->
+# Hlllllllllbot - chat bot
+It is repository for chat bot: [@Hlllllllllbot](https://t.me/Hlllllllllbot)
 
-This repository contains the documentation website code and Markdown source files for [docs.github.com](https://docs.github.com).
+Talk to the administrator through the bot. It's simple! The administrator can enter a password. Install it and test. It is advisable to have two telegram accounts
 
-GitHub's Docs team works on pre-production content in a private repo that regularly syncs with this public repo.
+![](https://i.imgur.com/EeU3shL.png)
 
-Use the table of contents icon <img src="./assets/images/table-of-contents.png" width="25" height="25" /> on the top left corner of this document to get to a specific section of this guide quickly.
 
-## Contributing
 
-See [the contributing guide](CONTRIBUTING.md) for detailed instructions of how to get started with our project. 
+## What it is?
+This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
 
-We accept different [types of contributions](CONTRIBUTING.md/#types-of-contributions-memo), including some that don't require you to write a single line of code.
+[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
 
-On the GitHub Docs site, you can click the make a contribution button to open a PR for quick fixes like typos, updates, or link fixes.
+A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
+## Create your own bot for Telegram from this Git repo
 
-<img src="./assets/images/contribution_cta.png" width="400">
+How to create bot?
+1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
+2. Create bot in App and add Secret Token
+3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
+4. Do import for this git repo
 
-For more complex contributions, you can open an issue using the most appropriate [issue template](https://github.com/github/docs/issues/new/choose) to describe the changes you'd like to see.
+Now you can talk with yours new Telegram Bot
 
-If you're looking for a way to contribute, you can scan through our [existing issues](https://github.com/github/docs/issues) for something to work on. When ready, check out [Getting Started with Contributing](/CONTRIBUTING.md) for detailed instructions.
+See [more](https://help.bots.business/getting-started)
 
-### Join us in discussions
+## Commands - in commands folder
+File name - it is command name (Bot it can be rewritten in command description)
 
-We use GitHub Discussions to talk about all sorts of topics related to documentation and this site. For example: if you'd like help troubleshooting a PR, have a great new idea, or want to share something amazing you've learned in our docs, join us in [discussions](https://github.com/github/docs/discussions).
+Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
 
-### And that's it!
+### Command description
+It is file header:
 
-If you're having trouble with your GitHub account, contact [Support](https://support.github.com/contact).
+    /*CMD
+      command: /test
+      help: this is help for ccommand
+      need_reply: [ true or false here ]
+      auto_retry_time: [ time in sec ]
+      answer: it is example answer for /test command
+      keyboard: button1, button2
+      aliases: /test2, /test3
+    CMD*/
 
-That's how you can easily become a member of the GitHub Documentation community. :sparkles:
+See [more](https://help.bots.business/commands)
 
-## READMEs
+### Command body
+It is command code in JavaScript.
+Use Bot Java Script for logic in command.
 
-In addition to the README you're reading right now, this repo includes other READMEs that describe the purpose of each subdirectory in more detail:
+For example:
+> Bot.sendMessage(2+2);
 
-- [content/README.md](content/README.md)
-- [content/graphql/README.md](content/graphql/README.md)
-- [content/rest/README.md](content/rest/README.md)
-- [contributing/README.md](contributing/README.md)
-- [data/README.md](data/README.md)
-- [data/reusables/README.md](data/reusables/README.md)
-- [data/variables/README.md](data/variables/README.md)
-- [includes/liquid-tags/README.md](includes/liquid-tags/README.md)
-- [includes/README.md](includes/README.md)
-- [components/README.md](components/README.md)
-- [lib/liquid-tags/README.md](lib/liquid-tags/README.md)
-- [middleware/README.md](middleware/README.md)
-- [script/README.md](script/README.md)
-- [stylesheets/README.md](stylesheets/README.md)
-- [tests/README.md](tests/README.md)
+See [more](https://help.bots.business/scenarios-and-bjs)
 
-## License
 
-The GitHub product documentation in the assets, content, and data folders are licensed under a [CC-BY license](LICENSE).
+## Libraries - in libs folder
+You can store common code in the libs folder. File name - it is library name.
 
-All other code in this repository is licensed under a [MIT license](LICENSE-CODE).
+For example code in myLib.js:
 
-When using the GitHub logos, be sure to follow the [GitHub logo guidelines](https://github.com/logos).
+    function hello(){ Bot.sendMessage("Hello from lib!") }
+    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
 
-## Thanks :purple_heart:
+    publish({
+      sayHello: hello,
+      sayGoodbyeTo: goodbye
+    })
 
-Thanks for all your contributions and efforts towards improving the GitHub documentation. We thank you being part of our :sparkles: community :sparkles: !
+then you can run in any bot's command:
+
+    Libs.myLib.hello()
+    Libs.myLib.sayGoodbyeTo("Alice")
+
+See [more](https://help.bots.business/git/library)
+
+## Other bots example
+See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
+
+
+## Other help
+[Help.bots.business](https://help.bots.business)
+
+## API
+See [API](https://api.bots.business/docs#/docs/summary)
+
+
+![](https://bots.business/images/web-logo.png)
